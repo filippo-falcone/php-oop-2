@@ -17,8 +17,7 @@ class Product{
     }
 
     public function setPrice($newPrice){
-        $this->price = $newPrice . ' ' . '€';
+        $this->price = $newPrice . '€';
     }
-
 }
 ?>

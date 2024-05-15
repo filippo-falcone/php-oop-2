@@ -11,5 +11,4 @@ class Kennel extends Product{
         $this->color = $_color;
     }
 }
-
 ?>
