@@ -1,11 +1,10 @@
 <?php
-include_once __DIR__ . '/Models/Category.php';
-include_once __DIR__ . '/Models/Product.php';
-include_once __DIR__ . '/Models/Kennel.php';
-include_once __DIR__ . '/Models/Game.php';
-include_once __DIR__ . '/Models/Food.php';
-include_once __DIR__ . '/db.php';
-
+require_once __DIR__ . '/Models/Category.php';
+require_once __DIR__ . '/Models/Product.php';
+require_once __DIR__ . '/Models/Kennel.php';
+require_once __DIR__ . '/Models/Game.php';
+require_once __DIR__ . '/Models/Food.php';
+require_once __DIR__ . '/db.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,20 +17,41 @@ include_once __DIR__ . '/db.php';
     <!-- /Bootstrap CSS -->
 </head>
 <body>
-    <?php foreach ($products as $product) { ?>
-        <div>
-            <h2><?php echo $product->name; ?></h2>
-            <?php if (isset($product->size)) { ?>
-                <div><?php echo $product->size; ?></div>
-            <?php } ?>
-            <?php if (isset($product->type)) { ?>
-                <div><?php echo $product->type; ?></div>
-            <?php } ?>
-            <?php if (isset($product->weight)) { ?>
-                <div><?php echo $product->getWeight(); ?></div>
-            <?php } ?>
-        </div>
-    <?php } ?>
+    <?php require_once __DIR__ . '/partials/template/header.php'; ?>
+    <main>
+        <?php foreach($categories as $category) { ?>
+            <section class="<?php echo $category->name; ?>">
+                <div class="container">
+                    <h1><?php echo $category->name; ?></h1>
+                    <div class="row g-3">
+                        <?php foreach($products as $product) { ?>
+                            <?php if ($product->category->name == $category->name) { ?>    
+                                <div class="col">
+                                    <div class="card" style="width: 18rem;">
+                                        <img src="..." class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><?php echo $product->name; ?></h5>
+                                            <p class="card-text">Prezzo: <?php echo $product->getPrice(); ?></p>
+                                            <p class="card-text">Materiale: <?php echo $product->material; ?></p>
+                                            <?php if (isset($product->size)) { ?>
+                                                <p class="card-text">Taglia: <?php echo $product->size; ?></p>
+                                            <?php } ?>
+                                            <?php if (isset($product->type)) { ?>
+                                                <p class="card-text">Tipologia di gioco: <?php echo $product->type; ?></p>
+                                            <?php } ?>
+                                            <?php if (isset($product->weight)) { ?>
+                                                <p class="card-text">Peso: <?php echo $product->getWeight(); ?></p>
+                                            <?php } ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } ?>
+                        <?php } ?>
+                    </div>
+                </div>
+            </section>
+        <?php } ?>
+    </main>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

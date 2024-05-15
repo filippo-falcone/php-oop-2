@@ -5,7 +5,6 @@ class Product{
     private $price;
     public $category;
     public $material;
-    public $color;
 
     public function __construct($_name, $_image, Category $_category){
         $this->name = $_name;
