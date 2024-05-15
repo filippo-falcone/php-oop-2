@@ -1,14 +1,15 @@
 <?php
 class Product{
     public $name;
+    public $image;
     private $price;
     public $category;
-    public $image;
     public $material;
     public $color;
 
-    public function __construct($_name, Category $_category){
+    public function __construct($_name, $_image, Category $_category){
         $this->name = $_name;
+        $this->image = $_image;
         $this->category = $_category;
     }
 
