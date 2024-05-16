@@ -6,18 +6,18 @@ class Product{
     public $category;
     public $material;
 
-    public function __construct($_name, $_image, Category $_category){
+    public function __construct($_name, Category $_category, $_image){
         $this->name = $_name;
-        $this->image = $_image;
         $this->category = $_category;
+        $this->image = $_image;
     }
 
     public function getPrice(){
-        return $this->price;
+        return $this->price . '€';
     }
 
     public function setPrice($newPrice){
-        $this->price = $newPrice . '€';
+        $this->price = $newPrice;
     }
 }
 ?>

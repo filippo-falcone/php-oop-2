@@ -5,8 +5,8 @@ class Food extends Product{
     public $weight;
     public $size;
 
-    public function __construct($_name, $_image, $_price, Category $_category, $_weight, $_material, $_size){
-        parent::__construct($_name, $_image, $_category);
+    public function __construct($_name, $_price, Category $_category, $_weight, $_material, $_size, $_image = 'https://media.istockphoto.com/id/1409329028/vector/no-picture-available-placeholder-thumbnail-icon-illustration-design.jpg?s=612x612&w=0&k=20&c=_zOuJu755g2eEUioiOUdz_mHKJQJn-tDgIAhQzyeKUQ='){
+        parent::__construct($_name, $_category, $_image);
         $this->setPrice($_price);
         $this->weight = $_weight;
         $this->material = $_material;

@@ -21,18 +21,23 @@ require_once __DIR__ . '/db.php';
     <main>
         <?php foreach($categories as $category) { ?>
             <section class="<?php echo $category->name; ?>">
-                <div class="container">
+                <div class="container py-4">
                     <h1><?php echo $category->name; ?></h1>
-                    <div class="row g-3">
+                    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
                         <?php foreach($products as $product) { ?>
                             <?php if ($product->category->name == $category->name) { ?>    
-                                <div class="col">
+                                <div class="col d-flex justify-content-center align-items-center">
                                     <div class="card" style="width: 18rem;">
-                                        <img src="..." class="card-img-top" alt="...">
+                                        <div class="image-container d-flex justify-content-center align-items-center">
+                                            <img src="<?php echo $product->image; ?>" alt="<?php echo $product->name; ?>" height="150">
+                                        </div>
                                         <div class="card-body">
                                             <h5 class="card-title"><?php echo $product->name; ?></h5>
                                             <p class="card-text">Prezzo: <?php echo $product->getPrice(); ?></p>
                                             <p class="card-text">Materiale: <?php echo $product->material; ?></p>
+                                            <?php if (isset($product->color)) { ?>
+                                                <p class="card-text">Colore: <?php echo $product->color; ?></p>
+                                            <?php } ?>
                                             <?php if (isset($product->size)) { ?>
                                                 <p class="card-text">Taglia: <?php echo $product->size; ?></p>
                                             <?php } ?>
